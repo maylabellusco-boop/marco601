@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco 60</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #ff0000, #000000);
+}
+
+.hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 110px;
+    letter-spacing: 4px;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.hero button {
+    margin-top: 25px;
+    padding: 15px 30px;
+    font-size: 16px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* SEZIONI */
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s ease;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card {
+    max-width: 850px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 55px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #ddd;
+}
+
+/* FOTO */
+img {
+    width: 320px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 0 30px rgba(255,0,0,0.3);
+}
+
+/* FINALE */
+.final {
+    height: 100vh;
+    background: linear-gradient(to top, black, red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.final h1 {
+    font-size: 70px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.final p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif');
+    opacity: 0.35;
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="hero">
+    <h1>MARCO 60</h1>
+    <p>Una storia che non si racconta… si vive.</p>
+    <button onclick="start()">INIZIA</button>
+</div>
+
+<!-- STORIA -->
+<div class="section">
+    <div class="card">
+        <h2>NON È UN COMPLEANNO QUALUNQUE</h2>
+        <p>
+            È una di quelle giornate in cui non si conta il tempo…  
+            si conta tutto quello che hai lasciato agli altri.
+        </p>
+    </div>
+</div>
+
+<!-- FOTO MARCO -->
+<div class="section">
+    <div class="card">
+        <h2>MARCO</h2>
+        <img src="marco.jpg">
+        <p>
+            Forte senza farlo pesare. Presente senza fare rumore.  
+            Uno di quelli che quando ci sono… si sente anche se non parlano.
+        </p>
+    </div>
+</div>
+
+<!-- REGALO -->
+<div class="section">
+    <div class="card">
+        <h2>IL REGALO</h2>
+        <img src="tagliere.jpg">
+        <p>
+            Un tagliere personalizzato.  
+            Per le tavolate, le risate, e tutto quello che ancora deve venire.
+        </p>
+    </div>
+</div>
+
+<!-- MESSAGGIO -->
+<div class="section">
+    <div class="card">
+        <h2>PER TE</h2>
+        <p>
+            Non servono grandi parole.  
+            Basta guardare quello che hai costruito per capire chi sei davvero.
+        </p>
+    </div>
+</div>
+
+<!-- FINALE -->
+<div class="final">
+    <div class="confetti"></div>
+    <h1>BUON 60° MARCO 🎸</h1>
+    <p>Mayli · Eri · Davide · Debby · Matilde</p>
+</div>
+
+<script>
+
+function start(){
+    document.querySelector('.hero').style.display = 'none';
+}
+
+// scroll animation
+const sections = document.querySelectorAll('.section');
+
+function reveal(){
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < trigger){
+            sec.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+
+</script>
+
+</body>
+</html>
